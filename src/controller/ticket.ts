@@ -94,7 +94,7 @@ const getAllTickets = async (req: Request, res: Response) => {
     const limit = parseInt(req.query.size as string) || 100;
     const skip = (page - 1) * limit;
 
-    const tickets = await Ticket.find().skip(skip).limit(limit);
+    const tickets = await Ticket.find().skip(skip).limit(limit > 100 ? 100 : limit);
 
     // Check if tickets exist
     if (!tickets || tickets.length === 0) {
