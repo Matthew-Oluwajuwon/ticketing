@@ -12,7 +12,6 @@ logs
 logs/*
 
 # Build directories
-dist/
 build/
 
 # Environment variables
