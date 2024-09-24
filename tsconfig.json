@@ -1,13 +1,5 @@
 {
   "compilerOptions": {
-    "baseUrl": "./src",  // Base directory for resolving non-relative module names
-    "paths": {
-      "db": ["db"],  // Adjust the path to where 'db' module is located relative to 'src'.
-      "utils/*": ["utils/*"],
-      "model/*": ["model/*"],
-      "controller/*": ["controller/*"],
-      "router/*": ["router/*"],
-    },
     "target": "ES6",
     "module": "commonjs",
     "outDir": "./dist",

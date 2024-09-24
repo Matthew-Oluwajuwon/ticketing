@@ -13,7 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
-const envConfig_1 = require("utils/envConfig");
+const envConfig_1 = require("../utils/envConfig");
 const dbConnection = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         mongoose_1.default.connect(envConfig_1.connectionString);

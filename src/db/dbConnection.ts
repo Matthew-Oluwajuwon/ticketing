@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { connectionString } from "utils/envConfig";
+import { connectionString } from "../utils/envConfig";
 
 const dbConnection = async() => {
     try {

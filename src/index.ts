@@ -1,8 +1,8 @@
-import { dbConnection } from 'db';
+import { dbConnection } from './db';
 import express, { Request, Response } from 'express'; 
-import { port } from 'utils/envConfig';
+import { port } from './utils/envConfig';
 import cors from "cors"
-import ticketRouter from 'router/ticket';
+import ticketRouter from './router/ticket';
 
 const app = express();
 

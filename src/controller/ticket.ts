@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import Joi from "joi";
-import { Ticket } from "model/Ticket";
-import cloudinary from "utils/cloudinaryConfig";
+import { Ticket } from "../model/Ticket";
+import cloudinary from "../utils/cloudinaryConfig";
 
 const createTicket = async (req: Request, res: Response) => {
   const {

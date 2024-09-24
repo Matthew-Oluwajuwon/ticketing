@@ -3,11 +3,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const db_1 = require("db");
+const db_1 = require("./db");
 const express_1 = __importDefault(require("express"));
-const envConfig_1 = require("utils/envConfig");
+const envConfig_1 = require("./utils/envConfig");
 const cors_1 = __importDefault(require("cors"));
-const ticket_1 = __importDefault(require("router/ticket"));
+const ticket_1 = __importDefault(require("./router/ticket"));
 const app = (0, express_1.default)();
 app.use((0, cors_1.default)());
 app.use(express_1.default.json());

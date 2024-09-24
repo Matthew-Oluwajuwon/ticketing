@@ -14,8 +14,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteTicket = exports.updateTicket = exports.getTicketById = exports.getAllTickets = exports.createTicket = void 0;
 const joi_1 = __importDefault(require("joi"));
-const Ticket_1 = require("model/Ticket");
-const cloudinaryConfig_1 = __importDefault(require("utils/cloudinaryConfig"));
+const Ticket_1 = require("../model/Ticket");
+const cloudinaryConfig_1 = __importDefault(require("../utils/cloudinaryConfig"));
 const createTicket = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
     const { title, description, price, eventDate, venue, category, status = "available", slots, image, } = req.body;

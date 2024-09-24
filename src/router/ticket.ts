@@ -1,4 +1,4 @@
-import { createTicket, deleteTicket, getAllTickets, getTicketById, updateTicket } from "controller/ticket"
+import { createTicket, deleteTicket, getAllTickets, getTicketById, updateTicket } from "../controller/ticket"
 import express from "express"
 
 const router = express.Router()
