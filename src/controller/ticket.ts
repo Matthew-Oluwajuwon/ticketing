@@ -91,7 +91,8 @@ const getAllTickets = async (req: Request, res: Response) => {
   try {
     // Fetch all tickets from the database
     const page = parseInt(req.query.page as string) || 1;
-    const limit = parseInt(req.query.size as string) > 100 ? 100 : parseInt(req.query.size as string) || 100;
+    const parsedSize = parseInt(req.query.size as string);
+const limit = parsedSize > 100 ? 100 : (isNaN(parsedSize) ? 100 : parsedSize);
     const skip = (page - 1) * limit;
 
     const tickets = await Ticket.find().skip(skip).limit(limit);
