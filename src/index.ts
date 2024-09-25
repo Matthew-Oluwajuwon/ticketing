@@ -54,7 +54,7 @@ app.get("/", (_req: Request, res: Response) => {
 });
 
 app.use("/api/", ticketRouter);
-app.use("/api/booking/", bookingRouter);
+app.use("/api/bookings/", bookingRouter);
 app.use("/api/statistics/", statisticsRouter);
 
 dbConnection();

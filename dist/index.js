@@ -47,7 +47,7 @@ app.get("/", (_req, res) => {
     res.send("Welcome to ticket booking RESTful APIs");
 });
 app.use("/api/", ticket_1.default);
-app.use("/api/booking/", booking_1.default);
+app.use("/api/bookings/", booking_1.default);
 app.use("/api/statistics/", statistics_1.default);
 (0, db_1.dbConnection)();
 app.listen(envConfig_1.port, () => {
