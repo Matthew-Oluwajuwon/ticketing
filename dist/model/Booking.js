@@ -39,6 +39,10 @@ const bookingSchema = new mongoose_1.default.Schema({
     authorizationUrl: {
         type: String,
     },
+    ticketCode: {
+        type: String,
+        min: 6
+    },
     status: {
         type: String,
         enum: ["CONFIRMED", "CANCELLED", "PENDING"],

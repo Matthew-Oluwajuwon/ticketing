@@ -4,7 +4,6 @@ import { port } from "./utils/envConfig";
 import cors from "cors";
 import ticketRouter from "./router/ticket";
 import bookingRouter from "./router/booking";
-import statisticsRouter from "./router/statistics";
 
 import swaggerUi from "swagger-ui-express";
 import swaggerJSDoc from "swagger-jsdoc";
@@ -27,7 +26,7 @@ const swaggerDefinition = {
   },
   servers: [
     {
-      url: "http://locahost:3000", // replace with your app's URL
+      url: "http://localhost:3000", // replace with your app's URL
       description: "Local server",
     },
     {
@@ -59,7 +58,6 @@ app.get("/", (_req: Request, res: Response) => {
 
 app.use("/api/", ticketRouter);
 app.use("/api/bookings/", bookingRouter);
-app.use("/api/statistics/", statisticsRouter);
 
 dbConnection();
 

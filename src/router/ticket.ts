@@ -11,9 +11,14 @@ const router = express.Router();
 
 /**
  * @swagger
- *   tags:
- *   name: Tickets
- *   description: Ticket management endpoints
+ * tags:
+ *   - name: Tickets
+ *     description: Ticket management
+ */
+
+
+/**
+ * @swagger
  *
  * /api/tickets:
  *   get:
@@ -40,9 +45,6 @@ router.get("/tickets", getAllTickets);
 
 /**
  * @swagger
- *   tags:
- *   name: Tickets
- *   description: Ticket management endpoints
  * /api/tickets/{id}:
  *   get:
  *     summary: Get a ticket by ID
@@ -73,9 +75,6 @@ router.get("/tickets/:id", getTicketById);
 
 /**
  * @swagger
- *   tags:
- *   name: Tickets
- *   description: Ticket management endpoints
  * /api/tickets:
  *   post:
  *     summary: Create a new ticket
@@ -127,9 +126,6 @@ router.post("/tickets", createTicket);
 
 /**
  * @swagger
- *   tags:
- *   name: Tickets
- *   description: Ticket management endpoints
  * /api/tickets/{id}:
  *   put:
  *     summary: Update a ticket by ID

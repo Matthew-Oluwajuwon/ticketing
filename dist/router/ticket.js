@@ -8,9 +8,12 @@ const ticket_1 = require("../controller/ticket");
 const router = express_1.default.Router();
 /**
  * @swagger
- *   tags:
- *   name: Tickets
- *   description: Ticket management endpoints
+ * tags:
+ *   - name: Tickets
+ *     description: Ticket management
+ */
+/**
+ * @swagger
  *
  * /api/tickets:
  *   get:
@@ -36,9 +39,6 @@ const router = express_1.default.Router();
 router.get("/tickets", ticket_1.getAllTickets);
 /**
  * @swagger
- *   tags:
- *   name: Tickets
- *   description: Ticket management endpoints
  * /api/tickets/{id}:
  *   get:
  *     summary: Get a ticket by ID
@@ -68,9 +68,6 @@ router.get("/tickets", ticket_1.getAllTickets);
 router.get("/tickets/:id", ticket_1.getTicketById);
 /**
  * @swagger
- *   tags:
- *   name: Tickets
- *   description: Ticket management endpoints
  * /api/tickets:
  *   post:
  *     summary: Create a new ticket
@@ -121,9 +118,6 @@ router.get("/tickets/:id", ticket_1.getTicketById);
 router.post("/tickets", ticket_1.createTicket);
 /**
  * @swagger
- *   tags:
- *   name: Tickets
- *   description: Ticket management endpoints
  * /api/tickets/{id}:
  *   put:
  *     summary: Update a ticket by ID

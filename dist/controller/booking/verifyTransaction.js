@@ -14,6 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const axios_1 = __importDefault(require("axios"));
 const Booking_1 = require("../../model/Booking");
+const helper_1 = require("../../utils/helper");
 const verifyTransaction = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { transactionRef } = req.query; // Get the transaction reference from the callback URL
     if (!transactionRef) {
@@ -24,8 +25,8 @@ const verifyTransaction = (req, res) => __awaiter(void 0, void 0, void 0, functi
         });
     }
     try {
-        let booking = (yield Booking_1.Booking.findOne({ transactionRef }));
         // Make the verification request
+        let booking = (yield Booking_1.Booking.findOne({ transactionRef }));
         const response = yield axios_1.default.get(`${process.env.PAYSTACK_API_BASE_URL}verify/${booking === null || booking === void 0 ? void 0 : booking.transactionRef}`, {
             headers: {
                 Authorization: `Bearer ${process.env.PAYSTACK_SECRET_KEY}`,
@@ -37,11 +38,12 @@ const verifyTransaction = (req, res) => __awaiter(void 0, void 0, void 0, functi
             const transactionDetails = data;
             // Process transactionDetails (e.g., save to DB, deliver product)
             booking.paymentStatus = "COMPLETED";
+            booking.ticketCode = (0, helper_1.generateRandomString)(6);
             booking.updatedAt = new Date().toJSON();
             yield booking.save();
             res.status(200).json({
                 responseCode: 200,
-                responseMessage: "Transaction successful",
+                responseMessage: "Transaction verified successfully",
                 data: {
                     paymentStatus: booking.paymentStatus,
                     reference: transactionDetails.reference,
@@ -52,7 +54,7 @@ const verifyTransaction = (req, res) => __awaiter(void 0, void 0, void 0, functi
                     currency: transactionDetails.currency,
                     fees: transactionDetails.fees,
                     customer: transactionDetails.customer,
-                    transactionDate: booking.createdAt
+                    transactionDate: booking.createdAt,
                 },
             });
         }
@@ -69,7 +71,12 @@ const verifyTransaction = (req, res) => __awaiter(void 0, void 0, void 0, functi
     }
     catch (error) {
         console.error("Error verifying transaction:", error.message);
-        res.status(500).send("Internal server error");
+        res.status(500).json({
+            responseCode: 500,
+            responseMessage: "Internal server error",
+            error: error.message,
+            data: null,
+        });
     }
 });
 exports.default = verifyTransaction;

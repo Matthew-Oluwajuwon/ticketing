@@ -9,7 +9,6 @@ const envConfig_1 = require("./utils/envConfig");
 const cors_1 = __importDefault(require("cors"));
 const ticket_1 = __importDefault(require("./router/ticket"));
 const booking_1 = __importDefault(require("./router/booking"));
-const statistics_1 = __importDefault(require("./router/statistics"));
 const swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
 const swagger_jsdoc_1 = __importDefault(require("swagger-jsdoc"));
 const path_1 = __importDefault(require("path")); // Import the path module for resolving paths
@@ -26,7 +25,7 @@ const swaggerDefinition = {
     },
     servers: [
         {
-            url: "http://locahost:3000", // replace with your app's URL
+            url: "http://localhost:3000", // replace with your app's URL
             description: "Local server",
         },
         {
@@ -52,7 +51,6 @@ app.get("/", (_req, res) => {
 });
 app.use("/api/", ticket_1.default);
 app.use("/api/bookings/", booking_1.default);
-app.use("/api/statistics/", statistics_1.default);
 (0, db_1.dbConnection)();
 app.listen(envConfig_1.port, () => {
     console.log(`Server is running on port ${envConfig_1.port}`);

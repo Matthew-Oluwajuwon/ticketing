@@ -4,4 +4,10 @@ import updateTicket from "./updateTicket";
 import getAllTickets from "./getTicket";
 import getTicketById from "./getOneTicket";
 
-export { createTicket, deleteTicket, updateTicket, getAllTickets, getTicketById };
+export {
+  createTicket,
+  deleteTicket,
+  updateTicket,
+  getAllTickets,
+  getTicketById,
+};

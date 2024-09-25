@@ -1,5 +1,5 @@
 import express from "express";
-import { getAllBookings, getBookingById, purchaseTicket, verifyTransaction } from "../controller/booking";
+import { getAllBookings, getBookingById, purchaseTicket, verifyTicketCode, verifyTransaction } from "../controller/booking";
 
 const router = express.Router();
 
@@ -119,20 +119,20 @@ router.get("/get-all-bookings", getAllBookings);
 
 /**
  * @swagger
- * /api/bookings/get-one-booking/{id}:
- *   get:
+ * /api/bookings/verify-ticket:
+ *   post:
  *     tags: [Booking]
- *     summary: Get a booking by ID
+ *     summary: Verify ticket code
  *     parameters:
- *       - in: path
- *         name: id
+ *       - in: query
+ *         name: ticketCode
  *         required: true
  *         schema:
  *           type: string
- *         description: The ID of the booking to retrieve
+ *         description: The code of the ticket to be verified
  *     responses:
  *       200:
- *         description: Booking found
+ *         description: Ticket verified successfully
  *         content:
  *           application/json:
  *             schema:
@@ -149,6 +149,36 @@ router.get("/get-all-bookings", getAllBookings);
  *                   type: integer
  *                   example: 2
  */
-router.get("/get-one-booking/:id", getBookingById);
+router.post("/verify-ticket", verifyTicketCode);
+
+/**
+ * @swagger
+ * /api/bookings/verify:
+ *   post:
+ *     tags: [Booking]
+ *     summary: Verify a transaction
+ *     parameters:
+ *       - in: query
+ *         name: transactionRef
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The reference of the transaction to verify
+ *     responses:
+ *       200:
+ *         description: Transaction verification successful
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "Transaction verified successfully"
+ *                 status:
+ *                   type: string
+ *                   example: "success"
+ */
+router.post("/verify", verifyTransaction);
 
 export default router;
