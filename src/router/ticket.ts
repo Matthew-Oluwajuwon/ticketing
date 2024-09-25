@@ -150,7 +150,36 @@ router.post("/tickets", createTicket);
  *             properties:
  *               title:
  *                 type: string
- *                 example: "Updated Ticket"
+ *                 example: ""
+ *               price:
+ *                 type: number
+ *                 example: 20
+ *               description:
+ *                 type: string
+ *                 example: ""
+ *               eventDate:
+ *                 type: date
+ *                 example: ""
+ *               venue:
+ *                 type: string
+ *                 example: ""
+ *               category:
+ *                 type: string
+ *                 enum: 
+ *                   - REGULAR
+ *                   - VIP
+ *                   - VVIP
+ *               status:
+ *                 type: string
+ *                 enum: 
+ *                   - AVAILABLE
+ *                   - CANCELLED
+ *               slots:
+ *                 type: number
+ *                 example: 0
+ *               image:
+ *                 type: string
+ *                 example: ""
  *     responses:
  *       200:
  *         description: Ticket updated
