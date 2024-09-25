@@ -27,7 +27,7 @@ const swaggerDefinition = {
   },
   servers: [
     {
-      url: "https://ticketing-production.up.railway.app", // replace with your app's URL
+      url: process.env.DEV ? "http://locahost:3000" : "https://ticketing-production.up.railway.app", // replace with your app's URL
       description: "Development server",
     },
   ],
@@ -37,7 +37,7 @@ const swaggerDefinition = {
 const options = {
   swaggerDefinition,
   // Ensure the path to your routes is correct; using absolute path or resolve it dynamically
-  apis: [path.resolve(__dirname, "./router/*.ts")], // Adjust based on your folder structure
+  apis: [path.resolve(__dirname, process.env.DEV ? "./router/*.ts" : "./router/*.js")], // Adjust based on your folder structure
 };
 
 // Initialize swagger-jsdoc -> returns validated swagger spec in json format

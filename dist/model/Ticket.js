@@ -29,6 +29,17 @@ const ticketSchema = new mongoose_1.default.Schema({
         type: String,
         required: true, // Venue of the event
     },
+    noOfPurchase: {
+        type: Number,
+        min: 0,
+        default: 0
+    },
+    transactionRef: {
+        type: String,
+    },
+    authorizationUrl: {
+        type: String,
+    },
     category: {
         type: String,
         enum: ["VIP", "REGULAR", "VVIP"], // Categories for ticket types
