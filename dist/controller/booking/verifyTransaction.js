@@ -52,7 +52,7 @@ const verifyTransaction = (req, res) => __awaiter(void 0, void 0, void 0, functi
                     currency: transactionDetails.currency,
                     fees: transactionDetails.fees,
                     customer: transactionDetails.customer,
-                    transnactionDate: booking.createdAt
+                    transactionDate: booking.createdAt
                 },
             });
         }

@@ -50,7 +50,7 @@ const verifyTransaction = async (req: Request, res: Response) => {
             currency: transactionDetails.currency,
             fees: transactionDetails.fees,
             customer: transactionDetails.customer,
-            transnactionDate: booking.createdAt
+            transactionDate: booking.createdAt
         },
       });
     } else {
