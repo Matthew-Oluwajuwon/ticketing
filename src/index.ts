@@ -27,8 +27,12 @@ const swaggerDefinition = {
   },
   servers: [
     {
-      url: process.env.DEV === 'true' ? "http://locahost:3000" : "https://ticketing-production.up.railway.app", // replace with your app's URL
-      description: "Development server",
+      url: "http://locahost:3000", // replace with your app's URL
+      description: "Local server",
+    },
+    {
+      url: "https://ticketing-production.up.railway.app", // replace with your app's URL
+      description: "Production server",
     },
   ],
 };
