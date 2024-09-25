@@ -4,6 +4,7 @@ import { port } from './utils/envConfig';
 import cors from "cors"
 import ticketRouter from './router/ticket';
 import bookingRouter from './router/booking';
+import statisticsRouter from "./router/statistics"
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.get('/', (_req: Request, res: Response) => {
 
 app.use("/api/", ticketRouter)
 app.use("/api/booking/", bookingRouter)
+app.use("/api/statistics/", statisticsRouter)
 
 dbConnection()
 
