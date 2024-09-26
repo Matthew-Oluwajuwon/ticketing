@@ -94,6 +94,19 @@ router.post("/verify", verifyTransaction);
  *   get:
  *     tags: [Booking]
  *     summary: Get all bookings
+ *     parameters:
+ *       - in: query
+ *         name: page
+ *         required: false
+ *         schema:
+ *           type: number
+ *         description: Page number
+ *       - in: query
+ *         name: size
+ *         required: false
+ *         schema:
+ *           type: number
+ *         description: Page size of data 
  *     responses:
  *       200:
  *         description: A list of all bookings

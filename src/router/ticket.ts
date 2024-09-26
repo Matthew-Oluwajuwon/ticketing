@@ -24,6 +24,19 @@ const router = express.Router();
  *   get:
  *     summary: Get all tickets
  *     tags: [Tickets]
+ *     parameters:
+ *       - in: query
+ *         name: page
+ *         required: false
+ *         schema:
+ *           type: number
+ *         description: Page number
+ *       - in: query
+ *         name: size
+ *         required: false
+ *         schema:
+ *           type: number
+ *         description: Page size of data 
  *     responses:
  *       200:
  *         description: A list of tickets
