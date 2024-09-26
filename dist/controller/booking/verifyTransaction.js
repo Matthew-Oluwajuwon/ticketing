@@ -46,7 +46,7 @@ const verifyTransaction = (req, res) => __awaiter(void 0, void 0, void 0, functi
                 responseMessage: "Transaction verified successfully",
                 data: {
                     paymentStatus: booking.paymentStatus,
-                    ticketCode: booking.code,
+                    ticketCode: booking.ticketCode,
                     reference: transactionDetails.reference,
                     gateway_response: transactionDetails.gateway_response,
                     amount: booking.totalAmount,

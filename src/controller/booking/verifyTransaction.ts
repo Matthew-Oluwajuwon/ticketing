@@ -43,7 +43,7 @@ const verifyTransaction = async (req: Request, res: Response) => {
         responseMessage: "Transaction verified successfully",
         data: {
           paymentStatus: booking.paymentStatus,
-          ticketCode: booking.code,
+          ticketCode: booking.ticketCode,
           reference: transactionDetails.reference,
           gateway_response: transactionDetails.gateway_response,
           amount: booking.totalAmount,
