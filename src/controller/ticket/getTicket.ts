@@ -26,7 +26,7 @@ const getAllTickets = async (req: Request, res: Response) => {
       responseCode: 200,
       responseMessage: "Tickets retrieved successfully",
       data: {
-        total: Math.ceil(totalTickets / parsedSize),
+        total: totalTickets,
         page,
         size: limit,
         tickets,

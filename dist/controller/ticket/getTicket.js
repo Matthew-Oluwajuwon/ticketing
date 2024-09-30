@@ -32,7 +32,7 @@ const getAllTickets = (req, res) => __awaiter(void 0, void 0, void 0, function* 
             responseCode: 200,
             responseMessage: "Tickets retrieved successfully",
             data: {
-                total: Math.ceil(totalTickets / parsedSize),
+                total: totalTickets,
                 page,
                 size: limit,
                 tickets,
