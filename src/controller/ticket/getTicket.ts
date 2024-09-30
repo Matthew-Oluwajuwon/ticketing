@@ -10,6 +10,7 @@ const getAllTickets = async (req: Request, res: Response) => {
     const skip = (page - 1) * limit;
 
     const tickets = await Ticket.find().skip(skip).limit(limit);
+   const totalTickets = await Ticket.countDocuments();
 
     // Check if tickets exist
     if (!tickets || tickets.length === 0) {
@@ -25,7 +26,7 @@ const getAllTickets = async (req: Request, res: Response) => {
       responseCode: 200,
       responseMessage: "Tickets retrieved successfully",
       data: {
-        total: tickets.length,
+        total: Math.ceil(totalTickets / parsedSize),
         page,
         size: limit,
         tickets,
