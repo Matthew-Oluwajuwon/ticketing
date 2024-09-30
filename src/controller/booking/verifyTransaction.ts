@@ -3,6 +3,8 @@ import { Request, Response } from "express";
 import { Booking } from "../../model/Booking";
 import { TransactionInfo } from "../../model/type";
 import { generateRandomString } from "../../utils/helper";
+import { io } from "../../index";
+
 
 const verifyTransaction = async (req: Request, res: Response) => {
   const { transactionRef } = req.query; // Get the transaction reference from the callback URL
@@ -37,6 +39,11 @@ const verifyTransaction = async (req: Request, res: Response) => {
       booking.updatedAt = new Date().toJSON();
 
       await booking.save();
+
+             // Emit a notification to all connected clients
+             io.emit("ticketPurchased", {
+                message: `A new ticket has been purchased ${booking.ticketCode}`,
+            });
 
       res.status(200).json({
         responseCode: 200,

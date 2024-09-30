@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const axios_1 = __importDefault(require("axios"));
 const Booking_1 = require("../../model/Booking");
 const helper_1 = require("../../utils/helper");
+const index_1 = require("../../index");
 const verifyTransaction = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { transactionRef } = req.query; // Get the transaction reference from the callback URL
     if (!transactionRef) {
@@ -41,6 +42,10 @@ const verifyTransaction = (req, res) => __awaiter(void 0, void 0, void 0, functi
             booking.ticketCode = (0, helper_1.generateRandomString)(6);
             booking.updatedAt = new Date().toJSON();
             yield booking.save();
+            // Emit a notification to all connected clients
+            index_1.io.emit("ticketPurchased", {
+                message: `A new ticket has been purchased ${booking.ticketCode}`,
+            });
             res.status(200).json({
                 responseCode: 200,
                 responseMessage: "Transaction verified successfully",

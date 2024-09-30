@@ -3,6 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.io = void 0;
 const db_1 = require("./db");
 const express_1 = __importDefault(require("express"));
 const envConfig_1 = require("./utils/envConfig");
@@ -13,8 +14,20 @@ const swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
 const swagger_jsdoc_1 = __importDefault(require("swagger-jsdoc"));
 const path_1 = __importDefault(require("path")); // Import the path module for resolving paths
 const dotenv_1 = __importDefault(require("dotenv"));
+const http_1 = __importDefault(require("http")); // Import HTTP module
+const socket_io_1 = require("socket.io"); // Import Socket.IO
 dotenv_1.default.config();
 const app = (0, express_1.default)();
+const server = http_1.default.createServer(app); // Create HTTP server
+// Increase request body size limit
+app.use(express_1.default.json({ limit: "10mb" })); // Set the limit to 10MB
+app.use(express_1.default.urlencoded({ limit: "10mb", extended: true })); // For form submissions
+exports.io = new socket_io_1.Server(server, {
+    cors: {
+        origin: ["http://localhost:5001", "http://localhost:9920"], // Your frontend URL
+        credentials: true, // Allow credentials like cookies
+    },
+}); // Initialize Socket.IO with the server
 // Swagger definition
 const swaggerDefinition = {
     openapi: "3.0.0",
@@ -25,11 +38,11 @@ const swaggerDefinition = {
     },
     servers: [
         {
-            url: "http://localhost:3000", // replace with your app's URL
+            url: "http://localhost:3000", // Replace with your app's URL
             description: "Local server",
         },
         {
-            url: "https://ticketing-production.up.railway.app", // replace with your app's URL
+            url: "https://ticketing-production.up.railway.app", // Replace with your app's URL
             description: "Production server",
         },
     ],
@@ -49,9 +62,15 @@ app.use(express_1.default.json());
 app.get("/", (_req, res) => {
     res.send("Welcome to ticket booking RESTful APIs");
 });
+// Add Socket.IO connection
+exports.io.on("connection", (socket) => {
+    console.log("A user connected:", socket.id);
+});
+// Use routers
 app.use("/api/", ticket_1.default);
 app.use("/api/bookings/", booking_1.default);
 (0, db_1.dbConnection)();
-app.listen(envConfig_1.port, () => {
+// Start server with Socket.IO
+server.listen(envConfig_1.port, () => {
     console.log(`Server is running on port ${envConfig_1.port}`);
 });
