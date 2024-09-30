@@ -12,6 +12,8 @@ const getAllTickets = async (req: Request, res: Response) => {
     const tickets = await Ticket.find().skip(skip).limit(limit);
    const totalTickets = await Ticket.countDocuments();
 
+   console.log(totalTickets)
+
     // Check if tickets exist
     if (!tickets || tickets.length === 0) {
       return res.status(404).json({
