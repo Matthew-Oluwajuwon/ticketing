@@ -81,7 +81,7 @@ router.get("/tickets", ticket_1.getAllTickets);
 router.get("/tickets/:id", ticket_1.getTicketById);
 /**
  * @swagger
- * /api/tickets:
+ * /api/ticket:
  *   post:
  *     summary: Create a new ticket
  *     tags: [Tickets]
