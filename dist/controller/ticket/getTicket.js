@@ -19,7 +19,6 @@ const getAllTickets = (req, res) => __awaiter(void 0, void 0, void 0, function* 
         const skip = (page - 1) * limit;
         const tickets = yield Ticket_1.Ticket.find().skip(skip).limit(limit);
         const totalTickets = yield Ticket_1.Ticket.countDocuments();
-        console.log(totalTickets);
         // Check if tickets exist
         if (!tickets || tickets.length === 0) {
             return res.status(404).json({
