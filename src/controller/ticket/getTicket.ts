@@ -20,7 +20,7 @@ const getAllTickets = async (req: Request, res: Response) => {
         data: null,
       });
     }
-
+ 
     // Respond with the list of tickets
     res.status(200).json({
       responseCode: 200,
