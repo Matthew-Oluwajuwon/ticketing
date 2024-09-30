@@ -28,7 +28,7 @@ const getAllBookings = async (req: Request, res: Response) => {
         total: bookings.length,
         page,
         size: limit,
-        bookings,
+        bookings: bookings.reverse(),
       },
     });
   } catch (error: any) {

@@ -34,7 +34,7 @@ const getAllBookings = (req, res) => __awaiter(void 0, void 0, void 0, function*
                 total: bookings.length,
                 page,
                 size: limit,
-                bookings,
+                bookings: bookings.reverse(),
             },
         });
     }

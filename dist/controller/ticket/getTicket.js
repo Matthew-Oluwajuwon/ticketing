@@ -35,7 +35,7 @@ const getAllTickets = (req, res) => __awaiter(void 0, void 0, void 0, function* 
                 total: totalTickets,
                 page,
                 size: limit,
-                tickets,
+                tickets: tickets.reverse(),
             },
         });
     }

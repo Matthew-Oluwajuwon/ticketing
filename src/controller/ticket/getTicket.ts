@@ -29,7 +29,7 @@ const getAllTickets = async (req: Request, res: Response) => {
         total: totalTickets,
         page,
         size: limit,
-        tickets,
+        tickets: tickets.reverse(),
       },
     });
   } catch (error: any) {
