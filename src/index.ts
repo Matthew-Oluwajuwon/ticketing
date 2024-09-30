@@ -40,7 +40,7 @@ const swaggerDefinition = {
       url: "http://localhost:3000", // Replace with your app's URL
       description: "Local server",
     },
-    {
+    { 
       url: "https://ticketing-production.up.railway.app", // Replace with your app's URL
       description: "Production server",
     },
